@@ -4,12 +4,11 @@ import 'package:flutter_currency_converter/app/widgets/app_colors.dart';
 import 'package:flutter_currency_converter/app/widgets/constans.dart';
 
 class ConverterBox extends StatelessWidget {
-  const ConverterBox({required this.prefixCurrency,required this.urlFlag,required this.title,required this.subtitle, Key? key }) : super(key: key);
+  const ConverterBox({required this.urlFlag,required this.title,required this.subtitle, Key? key }) : super(key: key);
   
   final Text title;
   final Text subtitle;
   final String urlFlag;
-  final String prefixCurrency;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,6 @@ class ConverterBox extends StatelessWidget {
                     const SizedBox(height: 30),
                     TextField(
                       decoration: InputDecoration(
-                        prefixText: prefixCurrency,
                         focusColor: AppColors.buttonColor,
                         suffixIcon: const Icon(Icons.attach_money_outlined), //Text("\$"),
                         border: const UnderlineInputBorder()

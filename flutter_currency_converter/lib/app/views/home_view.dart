@@ -32,7 +32,7 @@ class _HomeViewState extends State<HomeView> {
                   MyApp.isDarkTheme = !MyApp.isDarkTheme;
                 });
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.light_mode_sharp,
                 color: AppColors.titleColor,
               ),
@@ -48,7 +48,6 @@ class _HomeViewState extends State<HomeView> {
                 children: [
                   const SizedBox(height: 10),
                   ConverterBox(
-                      prefixCurrency: '\$',
                       title: Text(
                         'USD',
                         style: headLine,
@@ -75,7 +74,7 @@ class _HomeViewState extends State<HomeView> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Icon(
+                                 Icon(
                                   Icons.compare_arrows_outlined,
                                   color: AppColors.buttonColor,
                                 ),
@@ -88,14 +87,13 @@ class _HomeViewState extends State<HomeView> {
                             ),
                             style: OutlinedButton.styleFrom(
                                 backgroundColor: const Color(0x2F4B55C5),
-                                side: const BorderSide(
+                                side: BorderSide(
                                     color: AppColors.buttonColor))),
                       )
                     ],
                   ),
                   const SizedBox(height: 30),
                   ConverterBox(
-                      prefixCurrency: 'R\$',
                       urlFlag:
                           'https://cdn-icons-png.flaticon.com/512/206/206597.png',
                       title: Text(
