@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_currency_converter/app/models/currency_model.dart';
+
+class CurrencyController {
+  static List<CurrencyModel> currencies = CurrencyModel.currency;
+
+  CurrencyController({required this.fromText, required this.toText}) {
+    CurrencyModel from;
+    CurrencyModel to;
+  }
+  CurrencyModel from = currencies.elementAt(0);
+  CurrencyModel to = currencies.elementAt(1);
+  //por padrão deixa a convesão 
+ 
+  TextEditingController fromText;
+  TextEditingController toText;
+
+  void convertCurrency() {
+    double _convertedValue = 0;
+    //armazena o valor a ser retornado
+
+    String text = fromText.text;
+    double fromValue = double.tryParse(text) ?? 1.0;
+    //transfere o valor do inputText para double
+
+    switch (to.name) {
+      case 'Real':
+        _convertedValue = fromValue * from.real;
+        break;
+      case 'Dollar':
+        _convertedValue = fromValue * from.dollar;
+        break;
+      case 'Euro':
+        _convertedValue = fromValue * from.euro;
+        break;
+      default:
+        _convertedValue = fromValue * from.bitcoin;
+        break;
+    }
+    //calcula o resultado da moeda convertida
+
+    toText.text = _convertedValue.toStringAsFixed(2);
+    //passa o valor convertido para o inputText na view
+  }
+}
