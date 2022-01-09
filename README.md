@@ -12,7 +12,7 @@ Primeiro projeto desenvolvido em flutter por minha pessoa com objetivos de prati
 
 - [x] Criar pagina de conversão de moedas;
 - [ ] Criar pagina para selecionar moedas;
-- [ ] Implementar troca entre temas Dark & Light;
+- [X] Implementar troca entre temas Dark & Light;
 - [ ] Implementar atualização das moedas via API;
 - [ ] Utilizar de um Banco de Dados para armazenar as URLs das bandeiras;
 
