@@ -8,8 +8,8 @@ class CurrencyController {
     CurrencyModel from;
     CurrencyModel to;
   }
-  CurrencyModel from = currencies.elementAt(0);
-  CurrencyModel to = currencies.elementAt(1);
+  CurrencyModel from = currencies.elementAt(1);
+  CurrencyModel to = currencies.elementAt(0);
   //por padrão deixa a convesão 
  
   TextEditingController fromText;

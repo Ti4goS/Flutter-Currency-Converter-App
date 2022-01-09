@@ -56,13 +56,7 @@ class _HomeViewState extends State<HomeView> {
                   ConverterBox(
                     controller: fromText,
                     model: controller.from,
-                    subtitle: Text(
-                      'American Dollar',
-                      style: _themeChanger.darkTheme
-                          ? TextDark.subTitle
-                          : TextLight.subTitle,
-                    ),
-                    suffix: '\$',
+                    where: 'From',
                   ),
                   const SizedBox(height: 30),
                   Row(
@@ -111,13 +105,7 @@ class _HomeViewState extends State<HomeView> {
                   ConverterBox(
                     controller: toText,
                     model: controller.to,
-                    suffix: 'R\$',
-                    subtitle: Text(
-                      'Brazilian Real',
-                      style: _themeChanger.darkTheme
-                          ? TextDark.subTitle
-                          : TextLight.subTitle,
-                    ),
+                    where: 'to',
                   ),
                   const SizedBox(height: 30),
                 ],

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_converter/app/controller/theme_changer.dart';
 import 'package:flutter_currency_converter/app/models/currency_model.dart';
+import 'package:flutter_currency_converter/app/views/select_page/arguments_select.dart';
+import 'package:flutter_currency_converter/app/views/select_page/select_currency_view.dart';
 import 'package:flutter_currency_converter/app/views/widgets/app_colors.dart';
 import 'package:flutter_currency_converter/app/views/widgets/constants.dart';
 import 'package:flutter_currency_converter/app/views/widgets/container_decoration.dart';
@@ -8,25 +10,18 @@ import 'package:flutter_currency_converter/app/views/widgets/country_flag.dart';
 import 'package:provider/provider.dart';
 
 class ConverterBox extends StatefulWidget {
-
-   const ConverterBox(
-      {
-      required this.subtitle,
-      required this.suffix,
-      required this.controller,
-      Key? key, required this.model})
+  const ConverterBox({required this.controller, Key? key, required this.model, required this.where})
       : super(key: key);
+
   final CurrencyModel model;
   final TextEditingController controller;
-  final String suffix;
-  final Text subtitle;
+  final String where;
 
   @override
   State<ConverterBox> createState() => _ConverterBoxState();
 }
 
 class _ConverterBoxState extends State<ConverterBox> {
-
   @override
   Widget build(BuildContext context) {
     CurrencyModel item = widget.model;
@@ -44,17 +39,24 @@ class _ConverterBoxState extends State<ConverterBox> {
             ListTile(
               leading: CountryFlag(url: item.urlFlag),
               title: Text(
-                        item.name,
-                        style: _themeChanger.darkTheme
-                            ? TextDark.headLine
-                            : TextLight.headLine,
-                      ),
-              subtitle: widget.subtitle,
+                item.name,
+                style: _themeChanger.darkTheme
+                    ? TextDark.headLine
+                    : TextLight.headLine,
+              ),
+              subtitle: Text(
+                item.subTitle,
+                style: _themeChanger.darkTheme
+                    ? TextDark.subTitle
+                    : TextLight.subTitle,
+              ),
               trailing: IconButton(
                 icon: const Icon(Icons.arrow_forward_ios),
                 color: AppColors.primaryColor,
                 iconSize: 16,
-                onPressed: () {},
+                onPressed: () {
+                 Navigator.pushNamed(context, SelectCurrency.routeName,arguments: ArgSelect(where: widget.where));
+                },
               ),
             ),
             const SizedBox(height: 30),
@@ -69,7 +71,7 @@ class _ConverterBoxState extends State<ConverterBox> {
                 hintStyle: _themeChanger.darkTheme
                     ? TextDark.subTitle
                     : TextLight.subTitle,
-                suffixText: widget.suffix,
+                suffixText: item.suffix,
                 suffixStyle: _themeChanger.darkTheme
                     ? TextDark.subTitle
                     : TextLight.subTitle,
