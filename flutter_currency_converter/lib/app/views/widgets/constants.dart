@@ -20,6 +20,12 @@ static TextStyle headLine = TextStyle(
 
 static TextStyle subTitle = TextStyle(color: AppColorsLight.subtitleColor);
 //define o estilo dos titulos
+
+static TextStyle selectHeadline = TextStyle(
+    fontSize: 30, color: AppColorsLight.containerTitle, fontWeight: FontWeight.bold);
+
+static TextStyle textInput = TextStyle(
+    fontSize: 20, color: AppColorsLight.containerTitle, fontWeight: FontWeight.bold);
 }
 
 
@@ -35,5 +41,11 @@ class TextDark{
 
   static TextStyle subTitle = TextStyle(color: AppColorsDark.subtitleColor);
 //define o estilo dos titulos
+
+  static TextStyle selectHeadline = TextStyle(
+      fontSize: 30, color: AppColorsDark.containerTitle, fontWeight: FontWeight.bold);
+
+static TextStyle textInput = TextStyle(
+    fontSize: 20, color: AppColorsDark.containerTitle, fontWeight: FontWeight.bold);
 }
 

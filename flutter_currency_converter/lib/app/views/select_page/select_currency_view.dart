@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_converter/app/controller/theme_changer.dart';
 import 'package:flutter_currency_converter/app/views/select_page/arguments_select.dart';
+import 'package:flutter_currency_converter/app/views/select_page/countries_map.dart';
 import 'package:flutter_currency_converter/app/views/widgets/app_colors.dart';
 import 'package:flutter_currency_converter/app/views/widgets/constants.dart';
-import 'package:flutter_currency_converter/app/views/widgets/routes.dart';
+import 'package:flutter_currency_converter/app/views/widgets/container_decoration.dart';
 import 'package:provider/provider.dart';
 
 class SelectCurrency extends StatelessWidget {
@@ -24,7 +25,7 @@ class SelectCurrency extends StatelessWidget {
           ),
           leading: IconButton(
             onPressed: () {
-              Navigator.pushReplacementNamed(context, AppRoutes.home);
+              Navigator.pop(context);
             },
             icon: Icon(
               Icons.arrow_back_ios_new_outlined,
@@ -43,9 +44,31 @@ class SelectCurrency extends StatelessWidget {
               'Change Currency',
               textAlign: TextAlign.start,
               style: _themeChanger.darkTheme
-                  ? TextDark.headLine
-                  : TextLight.headLine,
+                  ? TextDark.selectHeadline
+                  : TextLight.selectHeadline,
             ),
+            const SizedBox(height: 30),
+            Container(
+              decoration: _themeChanger.darkTheme
+                  ? containerDecorationDark
+                  : containerDecorationLight,
+              height: 50,
+              child: TextField(
+                  keyboardType: TextInputType.text,
+                  style: _themeChanger.darkTheme
+                      ? TextDark.textInput
+                      : TextLight.textInput,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search,
+                        color: _themeChanger.darkTheme
+                            ? AppColorsDark.containerTitle
+                            : AppColorsLight.containerTitle),
+                    border: InputBorder.none,
+                  )),
+            ),
+            const SizedBox(height: 30),
+            SingleChildScrollView(
+              child: CountriesMap(where: args.where,)),
           ],
         ),
       ),
