@@ -6,6 +6,7 @@ import 'package:flutter_currency_converter/app/views/select_page/countries_map.d
 import 'package:flutter_currency_converter/app/views/widgets/app_colors.dart';
 import 'package:flutter_currency_converter/app/views/widgets/constants.dart';
 import 'package:flutter_currency_converter/app/views/widgets/container_decoration.dart';
+import 'package:flutter_currency_converter/app/views/widgets/routes.dart';
 import 'package:provider/provider.dart';
 
 class SelectCurrency extends StatefulWidget {
@@ -33,7 +34,7 @@ class _SelectCurrencyState extends State<SelectCurrency> {
           ),
           leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, AppRoutes.home);
             },
             icon: Icon(
               Icons.arrow_back_ios_new_outlined,
@@ -42,7 +43,9 @@ class _SelectCurrencyState extends State<SelectCurrency> {
           )),
       body: Container(
         width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.only(left: 50, right: 50),
+        padding: EdgeInsets.only(
+            left: MediaQuery.of(context).size.width * 0.05,
+            right: MediaQuery.of(context).size.width * 0.05),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
