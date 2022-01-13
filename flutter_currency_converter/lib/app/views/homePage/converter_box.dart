@@ -55,7 +55,7 @@ class _ConverterBoxState extends State<ConverterBox> {
                 color: AppColors.primaryColor,
                 iconSize: 16,
                 onPressed: () {
-                 Navigator.pushNamed(context, SelectCurrency.routeName,arguments: ArgSelect(where: widget.where));
+                 Navigator.pushNamed(context, SelectCurrency.routeName,arguments: ArgSelect(where: widget.where, item: CurrencyModel.currency));
                 },
               ),
             ),

@@ -55,7 +55,8 @@ class _HomeViewState extends State<HomeView> {
                   const SizedBox(height: 10),
                   ConverterBox(
                     controller: fromText,
-                    model: controller.from,
+                    model: //controller.from,
+                    CurrencyController.from,
                     where: 'From',
                   ),
                   const SizedBox(height: 30),
@@ -104,7 +105,8 @@ class _HomeViewState extends State<HomeView> {
                   const SizedBox(height: 30),
                   ConverterBox(
                     controller: toText,
-                    model: controller.to,
+                    model: //controller.to,
+                    CurrencyController.to,
                     where: 'to',
                   ),
                   const SizedBox(height: 30),

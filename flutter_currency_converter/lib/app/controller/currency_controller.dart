@@ -4,14 +4,14 @@ import 'package:flutter_currency_converter/app/models/currency_model.dart';
 class CurrencyController {
   static List<CurrencyModel> currencies = CurrencyModel.currency;
 
-  CurrencyController({required this.fromText, required this.toText}) {
-    CurrencyModel from;
-    CurrencyModel to;
-  }
-  CurrencyModel from = currencies.elementAt(1);
-  CurrencyModel to = currencies.elementAt(0);
+  CurrencyController({required this.fromText, required this.toText});
+
+  static CurrencyModel from = currencies.elementAt(1);
+  static CurrencyModel to = currencies.elementAt(0);
+
+
   //por padrão deixa a convesão 
- 
+  
   TextEditingController fromText;
   TextEditingController toText;
 
