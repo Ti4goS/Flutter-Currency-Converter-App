@@ -18,6 +18,15 @@ class SelectCurrency extends StatefulWidget {
 }
 
 class _SelectCurrencyState extends State<SelectCurrency> {
+
+  
+
+  String filter = '';
+  //filtro que será utilizado no onChanged do textField
+
+  late List<CurrencyModel> filteredList;
+  //lista de itens filtrados que sera iniciada posteriormente
+
   @override
   Widget build(BuildContext context) {
     ThemeChanger _themeChanger = Provider.of<ThemeChanger>(context);
@@ -63,6 +72,11 @@ class _SelectCurrencyState extends State<SelectCurrency> {
                   : containerDecorationLight,
               height: 50,
               child: TextField(
+                  onChanged: (text){
+                    setState(() {
+                      filter = text;
+                    });
+                  },
                   keyboardType: TextInputType.text,
                   style: _themeChanger.darkTheme
                       ? TextDark.textInput
@@ -78,7 +92,7 @@ class _SelectCurrencyState extends State<SelectCurrency> {
             const SizedBox(height: 30),
             Flexible(
               child: ListView.builder(
-                  itemCount: 4,
+                  itemCount: item.length,
                   itemBuilder: (context, i) {
                     return CountriesMap(
                         where: args.where, item: item.elementAt(i));
