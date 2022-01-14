@@ -55,7 +55,7 @@ class CurrencyModel {
           euro: 36740,
           bitcoin: 1,
           urlFlag:
-              'https://cdn.icon-icons.com/icons2/1487/PNG/512/8369-bitcoin_102502.png',
+              'https://www.pngkey.com/png/full/101-1010708_full-bitcoin-cash-transparent-logo.png',
           subTitle: 'Cripto Bitcoin',
           suffix: 'BTC')
     ];
