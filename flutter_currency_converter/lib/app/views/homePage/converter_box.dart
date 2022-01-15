@@ -3,10 +3,7 @@ import 'package:flutter_currency_converter/app/controller/theme_changer.dart';
 import 'package:flutter_currency_converter/app/models/currency_model.dart';
 import 'package:flutter_currency_converter/app/views/select_page/arguments_select.dart';
 import 'package:flutter_currency_converter/app/views/select_page/select_currency_view.dart';
-import 'package:flutter_currency_converter/app/views/widgets/app_colors.dart';
-import 'package:flutter_currency_converter/app/views/widgets/constants.dart';
-import 'package:flutter_currency_converter/app/views/widgets/container_decoration.dart';
-import 'package:flutter_currency_converter/app/views/widgets/country_flag.dart';
+import '../widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 class ConverterBox extends StatefulWidget {

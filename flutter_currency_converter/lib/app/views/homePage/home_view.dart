@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_converter/app/controller/currency_controller.dart';
 import 'package:flutter_currency_converter/app/controller/theme_changer.dart';
-import 'package:flutter_currency_converter/app/views/widgets/app_colors.dart';
-import 'package:flutter_currency_converter/app/views/widgets/constants.dart';
-import 'package:flutter_currency_converter/app/views/widgets/container_decoration.dart';
+import '../widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 import 'converter_box.dart';

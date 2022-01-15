@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_converter/app/controller/currency_search_controller.dart';
 import 'package:flutter_currency_converter/app/controller/theme_changer.dart';
-import 'package:flutter_currency_converter/app/models/currency_model.dart';
 import 'package:flutter_currency_converter/app/views/select_page/arguments_select.dart';
 import 'package:flutter_currency_converter/app/views/select_page/countries_map.dart';
-import 'package:flutter_currency_converter/app/views/widgets/app_colors.dart';
-import 'package:flutter_currency_converter/app/views/widgets/constants.dart';
-import 'package:flutter_currency_converter/app/views/widgets/container_decoration.dart';
-import 'package:flutter_currency_converter/app/views/widgets/routes.dart';
+import '../widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 class SelectCurrency extends StatefulWidget {
@@ -19,20 +16,17 @@ class SelectCurrency extends StatefulWidget {
 
 class _SelectCurrencyState extends State<SelectCurrency> {
 
-  
-
-  String filter = '';
-  //filtro que será utilizado no onChanged do textField
-
-  late List<CurrencyModel> filteredList;
-  //lista de itens filtrados que sera iniciada posteriormente
-
   @override
   Widget build(BuildContext context) {
     ThemeChanger _themeChanger = Provider.of<ThemeChanger>(context);
+    //Controller do tema do APP
+    
+    CurrencySearch _currencySearch = Provider.of<CurrencySearch>(context);
+    //controller do filtro de seleção de moedas
 
     final args = ModalRoute.of(context)!.settings.arguments as ArgSelect;
-    List<CurrencyModel> item = CurrencyModel.currency;
+    //argumentos recebidos na mudança de página
+
 
     return Scaffold(
       appBar: AppBar(
@@ -74,7 +68,8 @@ class _SelectCurrencyState extends State<SelectCurrency> {
               child: TextField(
                   onChanged: (text){
                     setState(() {
-                      filter = text;
+                      _currencySearch.setCurrency(text);
+                      debugPrint(text);
                     });
                   },
                   keyboardType: TextInputType.text,
@@ -92,10 +87,10 @@ class _SelectCurrencyState extends State<SelectCurrency> {
             const SizedBox(height: 30),
             Flexible(
               child: ListView.builder(
-                  itemCount: item.length,
+                  itemCount: _currencySearch.getCurrency.length,
                   itemBuilder: (context, i) {
                     return CountriesMap(
-                        where: args.where, item: item.elementAt(i));
+                        where: args.where, item: _currencySearch.getCurrency.elementAt(i));
                   }),
             ),
           ],

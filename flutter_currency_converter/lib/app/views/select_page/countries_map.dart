@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_currency_converter/app/controller/change_currency_controller.dart';
 import 'package:flutter_currency_converter/app/controller/theme_changer.dart';
 import 'package:flutter_currency_converter/app/models/currency_model.dart';
-import 'package:flutter_currency_converter/app/views/widgets/app_colors.dart';
-import 'package:flutter_currency_converter/app/views/widgets/constants.dart';
-import 'package:flutter_currency_converter/app/views/widgets/country_flag.dart';
-import 'package:flutter_currency_converter/app/views/widgets/routes.dart';
 import 'package:provider/provider.dart';
+import '../widgets/widgets.dart';
+
 
 class CountriesMap extends StatefulWidget {
   const CountriesMap({Key? key, required this.where, required this.item})
