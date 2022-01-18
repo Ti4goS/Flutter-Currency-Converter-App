@@ -5,7 +5,7 @@ class CurrencyModel {
       required this.dollar,
       required this.euro,
       required this.bitcoin,
-      required this.urlFlag,
+       required this.urlFlag,
       required this.subTitle,
       required this.suffix});
 
@@ -55,7 +55,7 @@ class CurrencyModel {
           euro: 36740,
           bitcoin: 1,
           urlFlag:
-              'https://www.pngkey.com/png/full/101-1010708_full-bitcoin-cash-transparent-logo.png',
+              'https://blog.netlex.com.br/wp-content/uploads/2018/01/bit-rev-.jpg',
           subTitle: 'Cripto Bitcoin',
           suffix: 'BTC')
     ];
