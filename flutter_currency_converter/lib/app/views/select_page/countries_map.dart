@@ -18,6 +18,8 @@ class CountriesMap extends StatefulWidget {
 }
 
 class _CountriesMapState extends State<CountriesMap> {
+
+
   @override
   Widget build(BuildContext context) {
     ChangeCurrency _changeCurrency = Provider.of<ChangeCurrency>(context);

@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_currency_converter/app/controller/fetch_controller.dart';
 import 'package:flutter_currency_converter/app/models/currency_model.dart';
+import 'package:flutter_currency_converter/app/repositories/currency_apy_decoder.dart';
+import 'package:flutter_currency_converter/app/views/widgets/widgets.dart';
 
-class CurrencyController {
-  static List<CurrencyModel> currencies = CurrencyModel.currency;
+class CurrencyController{
+
+ static List<CurrencyModel> currencies = [];
 
   CurrencyController({required this.fromText, required this.toText});
 
+  static getList(List<CurrencyModel> lista){
+    if(lista.isEmpty){
+      currencies = List.empty(growable: true);
+      currencies = CurrencyModel.currency;
+    } else {
+      currencies = List.empty(growable: true);
+      currencies = lista;
+    }
+  }
   static CurrencyModel from = currencies.elementAt(1);
   static CurrencyModel to = currencies.elementAt(0);
 

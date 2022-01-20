@@ -1,40 +1,34 @@
+import 'dart:convert';
 
-
-import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter_currency_converter/app/models/json_model.dart';
+import 'package:http/http.dart' as http;
 
 class ApiDecoder {
-  final urlBase = 'https://economia.awesomeapi.com.br/last/USD-BRL';
-  final dio = Dio();
 
-  Future getDados(String currency) async {
-
-    final response = await dio.get(urlBase);
-    final body = response.data;
-    debugPrint(body.toString());
-    //faz a requisição web e retorna o mapa para a variavel json
+  final converts = ['USDBRL','EURBRL','BTCBRL','BRLUSD','EURUSD','BTCUSD','BRLEUR','USDEUR','BTCEUR'];
+  //lista de todas as conversões que serão recebidas da API Rest
 
 
-  }
+  final uri = Uri.parse(
+      'https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL,BRL-USD,EUR-USD,BTC-USD,BRL-EUR,USD-EUR,BTC-EUR');
 
-  urlBuild(String currency){
-    late String url;
+  Future<List<Currency>> getDados() async {
+    List<Currency> lista = [];
+    //cria uma lista de cotações vazias
 
-    switch (currency) {
-      case 'usd':
-        url = 'https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL,BRL-USD,EUR-USD,BTC-USD,BRL-EUR,USD-EUR,BTC-EUR';
-        break;
-      case 'eur':
-        url = 'https://economia.awesomeapi.com.br/last/BRL-EUR,USD-EUR,BTC-EUR';
-        break;
-      case 'brl':
-        url = 'https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL';
-        break;
-      case 'btc':
-        url = 'https://economia.awesomeapi.com.br/last/BRL-BTC,EUR-BTC,USD-BTC';
-        break;
+    final response = await http.get(uri);
+    var data = jsonDecode(response.body.toString());
+    //faz a requisição http dos arquivos
+
+    if (response.statusCode == 200) {
+    //se ele conseguiu se comunicar com o servidor retorna a lista com os dados
+      for (var item in converts) {
+        lista.add(Currency.fromJson(data[item]));
+      }
+    } else{
+    //se ele não conseguiu se conectar com o servidor retorna uma lista vazia
+      lista = List.empty();
     }
-
-    return url;
+    return lista;
   }
 }

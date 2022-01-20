@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_converter/app/models/currency_model.dart';
+import 'package:flutter_currency_converter/app/repositories/currency_apy_decoder.dart';
 
 class CurrencySearch extends ChangeNotifier {
-  List<CurrencyModel> _filteredList = CurrencyModel.currency;
+
+  List<CurrencyModel> _filteredList = List.empty(growable: true);
+  var loading = ValueNotifier(false);
+
 
   void setCurrency(String filter) {
     if (filter.isNotEmpty) {
@@ -26,6 +30,8 @@ class CurrencySearch extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<CurrencyModel> get getCurrency => _filteredList;
+  List<CurrencyModel> get getCurrency {
+      return _filteredList;
+  }
   //getter da lista filtrada
 }

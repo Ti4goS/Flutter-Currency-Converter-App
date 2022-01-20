@@ -20,15 +20,13 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     ThemeChanger _themeChanger = Provider.of<ThemeChanger>(context);
+    CurrencyController controller = CurrencyController(fromText: fromText, toText: toText);
 
-    CurrencyController controller =
-        CurrencyController(fromText: fromText, toText: toText);
-
+    
+    
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'CURRENCY CONVERTER',
-          ),
+          title: const Text('CUREENCY CONVERTER'),
           actions: <Widget>[
             IconButton(
               onPressed: () {

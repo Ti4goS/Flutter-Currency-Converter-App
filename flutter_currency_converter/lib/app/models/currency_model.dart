@@ -1,3 +1,7 @@
+import 'package:flutter/animation.dart';
+import 'package:flutter_currency_converter/app/models/json_model.dart';
+import 'package:flutter_currency_converter/app/views/widgets/constants.dart';
+
 class CurrencyModel {
   CurrencyModel(
       {required this.name,
@@ -5,7 +9,7 @@ class CurrencyModel {
       required this.dollar,
       required this.euro,
       required this.bitcoin,
-       required this.urlFlag,
+      required this.urlFlag,
       required this.subTitle,
       required this.suffix});
 
@@ -18,6 +22,12 @@ class CurrencyModel {
   String subTitle;
   String suffix;
 
+  static List get flags =>
+      [Links.brlFlag, Links.usdFlag, Links.eurFlag, Links.btcFlag];
+
+  static List get subTitles =>
+      ['Brazilian Real', 'American Dollar', 'Euro', 'Cripto Bitcoin'];
+
   static List<CurrencyModel> get currency {
     return <CurrencyModel>[
       CurrencyModel(
@@ -26,7 +36,7 @@ class CurrencyModel {
         dollar: 5.64,
         euro: 6.40,
         bitcoin: 0.0000042,
-        urlFlag: 'https://cdn-icons-png.flaticon.com/512/206/206597.png',
+        urlFlag: Links.brlFlag,
         subTitle: 'Brazilian Real',
         suffix: 'R\$',
       ),
@@ -36,7 +46,7 @@ class CurrencyModel {
           dollar: 1,
           euro: 0.88,
           bitcoin: 0.000024,
-          urlFlag: 'https://cdn-icons-png.flaticon.com/512/206/206626.png',
+          urlFlag: Links.usdFlag,
           subTitle: 'American Dollar',
           suffix: '\$'),
       CurrencyModel(
@@ -45,7 +55,7 @@ class CurrencyModel {
           dollar: 1.14,
           euro: 1,
           bitcoin: 0.000027,
-          urlFlag: 'https://cdn-icons-png.flaticon.com/512/555/555657.png',
+          urlFlag: Links.eurFlag,
           subTitle: 'Euro',
           suffix: '€'),
       CurrencyModel(
@@ -54,10 +64,59 @@ class CurrencyModel {
           dollar: 41744,
           euro: 36740,
           bitcoin: 1,
-          urlFlag:
-              'https://blog.netlex.com.br/wp-content/uploads/2018/01/bit-rev-.jpg',
+          urlFlag: Links.btcFlag,
           subTitle: 'Cripto Bitcoin',
           suffix: 'BTC')
     ];
+  }
+
+  static fromCurrency(List<Currency> items) {
+    List<CurrencyModel> lista = [];
+
+    List<Currency> usd = [];
+    List<Currency> brl = [];
+    List<Currency> eur = [];
+    List<Currency> btc = [];
+
+    for (var item in items) {
+      switch (item.code) {
+        case 'USD':
+          usd.add(item);
+          break;
+        case 'EUR':
+          eur.add(item);
+          break;
+        case 'BRL':
+          brl.add(item);
+          break;
+        case 'BTC':
+          btc.add(item);
+          switch (item.codein) {
+            case 'USD':
+              usd.add(item);
+              break;
+            case 'EUR':
+              eur.add(item);
+              break;
+            case 'BRL':
+              brl.add(item);
+              break;
+          }
+          break;
+      }
+    }
+
+    for(var item in usd){
+      print(item.code.toString() +'  '+ item.codein.toString());
+    }
+    for(var item in brl){
+      print(item.code.toString() +'  '+ item.codein.toString());
+    }
+    for(var item in eur){
+      print(item.code.toString() +'  '+ item.codein.toString());
+    }
+    for(var item in btc){
+      print(item.code.toString() +'  '+ item.codein.toString());
+    }
   }
 }

@@ -49,3 +49,11 @@ static TextStyle textInput = TextStyle(
     fontSize: 20, color: AppColorsDark.containerTitle, fontWeight: FontWeight.bold);
 }
 
+class Links {
+  static const brlFlag = 'https://cdn-icons-png.flaticon.com/512/206/206597.png';
+  static const usdFlag = 'https://cdn-icons-png.flaticon.com/512/206/206626.png';
+  static const eurFlag = 'https://cdn-icons-png.flaticon.com/512/555/555657.png';
+  static const btcFlag = 'https://blog.netlex.com.br/wp-content/uploads/2018/01/bit-rev-.jpg';
+
+}
+
