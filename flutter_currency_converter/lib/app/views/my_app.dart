@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_currency_converter/app/controller/theme_changer.dart';
+import 'package:flutter_currency_converter/app/views/fetchPage/fetch_view.dart';
 import 'package:flutter_currency_converter/app/views/select_page/select_currency_view.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
         theme: MyTheme.lightTheme,
         darkTheme: MyTheme.darkTheme,
         routes: {
-          AppRoutes.home: (context) => const HomeView(),
+          AppRoutes.home: (context) => const FetchView(),
+          AppRoutes.homePage: (context) => const HomeView(),
           SelectCurrency.routeName : (context) => const SelectCurrency(),
         },
         initialRoute: AppRoutes.home,

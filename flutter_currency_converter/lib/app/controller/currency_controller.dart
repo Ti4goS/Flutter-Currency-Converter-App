@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_currency_converter/app/controller/fetch_controller.dart';
 import 'package:flutter_currency_converter/app/models/currency_model.dart';
-import 'package:flutter_currency_converter/app/repositories/currency_apy_decoder.dart';
-import 'package:flutter_currency_converter/app/views/widgets/widgets.dart';
 
 class CurrencyController{
 

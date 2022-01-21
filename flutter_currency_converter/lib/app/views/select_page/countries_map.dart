@@ -57,7 +57,7 @@ class _CountriesMapState extends State<CountriesMap> {
           setState(() {
             _changeCurrency.setCurrency(widget.where, widget.item);
           });
-          Navigator.pushReplacementNamed(context, AppRoutes.home);
+          Navigator.pushReplacementNamed(context, AppRoutes.homePage);
         },
       ),
     );

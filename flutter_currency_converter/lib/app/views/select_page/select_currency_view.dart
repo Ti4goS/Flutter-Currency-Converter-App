@@ -37,7 +37,7 @@ class _SelectCurrencyState extends State<SelectCurrency> {
           ),
           leading: IconButton(
             onPressed: () {
-              Navigator.pushReplacementNamed(context, AppRoutes.home);
+              Navigator.pushReplacementNamed(context, AppRoutes.homePage);
             },
             icon: Icon(
               Icons.arrow_back_ios_new_outlined,
@@ -69,7 +69,6 @@ class _SelectCurrencyState extends State<SelectCurrency> {
                   onChanged: (text){
                     setState(() {
                       _currencySearch.setCurrency(text);
-                      debugPrint(text);
                     });
                   },
                   keyboardType: TextInputType.text,

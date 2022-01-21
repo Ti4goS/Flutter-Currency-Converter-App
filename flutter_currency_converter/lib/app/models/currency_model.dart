@@ -1,4 +1,3 @@
-import 'package:flutter/animation.dart';
 import 'package:flutter_currency_converter/app/models/json_model.dart';
 import 'package:flutter_currency_converter/app/views/widgets/constants.dart';
 
@@ -71,8 +70,6 @@ class CurrencyModel {
   }
 
   static fromCurrency(List<Currency> items) {
-    List<CurrencyModel> lista = [];
-
     List<Currency> usd = [];
     List<Currency> brl = [];
     List<Currency> eur = [];
@@ -105,18 +102,43 @@ class CurrencyModel {
           break;
       }
     }
-
-    for(var item in usd){
-      print(item.code.toString() +'  '+ item.codein.toString());
-    }
-    for(var item in brl){
-      print(item.code.toString() +'  '+ item.codein.toString());
-    }
-    for(var item in eur){
-      print(item.code.toString() +'  '+ item.codein.toString());
-    }
-    for(var item in btc){
-      print(item.code.toString() +'  '+ item.codein.toString());
-    }
+    return <CurrencyModel>[
+      CurrencyModel(
+          name: 'Real',
+          real: 1,
+          dollar: double.parse(brl[1].bid),
+          euro: double.parse(brl[2].bid),
+          bitcoin: 1 / double.parse(brl[0].bid.toString().replaceAll('.', '')),
+          urlFlag: Links.brlFlag,
+          subTitle: 'Brazilian Real',
+          suffix: 'R\$'),
+      CurrencyModel(
+          name: 'Dollar',
+          real: double.parse(usd[0].bid),
+          dollar: 1,
+          euro: double.parse(usd[2].bid),
+          bitcoin: 1/double.parse(usd[1].bid),
+          urlFlag: Links.usdFlag,
+          subTitle: 'American Dollar',
+          suffix: '\$'),
+      CurrencyModel(
+          name: 'Euro',
+          real: double.parse(eur[0].bid),
+          dollar: double.parse(eur[1].bid),
+          euro: 1,
+          bitcoin: 1/double.parse(eur[2].bid),
+          urlFlag: Links.eurFlag,
+          subTitle: 'Euro',
+          suffix: '€'),
+      CurrencyModel(
+          name: 'Bitcoin',
+          real: double.parse(btc[0].bid),
+          dollar: double.parse(btc[1].bid),
+          euro: double.parse(btc[2].bid),
+          bitcoin: 1,
+          urlFlag: Links.btcFlag,
+          subTitle: 'Cripto Bitcoin',
+          suffix: 'BTC')
+    ];
   }
 }
