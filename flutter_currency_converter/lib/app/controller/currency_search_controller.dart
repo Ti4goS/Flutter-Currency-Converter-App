@@ -14,8 +14,8 @@ class CurrencySearch extends ChangeNotifier {
       //verifica se o filtro está vazio
       for (dynamic currency in FetchController.finalCurrencies) {
         //faz um loop para cada itam dentro da lista "item"
-        
-        if (currency.name.contains(filter.toLowerCase())) {
+        String name = currency.name.toString().toLowerCase();
+        if (name.contains(filter.toLowerCase())) {
           filteredList.add(currency);
         }
         //verifica se o atual nome da moeda tem o filtro digitado pelo usuário
